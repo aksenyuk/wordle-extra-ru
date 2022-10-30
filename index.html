@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpg" href="./assets/icon.jpg" />
+  <script src="script.js" defer></script>
+  <title>Wordle - The New York Times</title>
+</head>
+<body>
+  <img src="./assets/three_lines.jpg" alt="Wordle Logo" id="lines">
+  <img src="./assets/og-image.png" alt="Wordle Logo" id="logo">
+  <img src="./assets/question.jpg" alt="Wordle Logo" id="question">
+
+  <h2 class="line"></h2>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="hint_header">Подсказка</p>
+      <p id="hint_text">Я тебя __ с праздником!</p>
+    </div>
+  </div>
+
+  <div id="result" class="result-modal">
+    <div class="result-content">
+      <span class="result-close">&times;</span>
+      <p id="result_header">Правильный ответ:</p>
+      <p id="result_text">the word</p>
+      <p id="anniversary"> </p>
+      <p id="reset-text">Обновите страницу браузера, чтобы продолжить играть</p>
+    </div>
+  </div>
+
+  <div id="rules" class="rules-modal">
+    <div class="rules-content">
+      <span class="rules-close">&times;</span>
+      <p id="rules_header">Правила игры</p>
+      <div class="rules_text">
+        Угадайте загаданное слово с шести попыток. <br><br>
+        После каждой попытки цвет букв будет меняться, чтобы показать, какие буквы есть в загаданном слове: <br><br>
+        <mark class="yellow">&#129000 Жёлтый цвет</mark> означает, что данная буква <u>присутствует</u> в загаданном слове, но <u>не на введённой позиции</u>; <br>
+        <mark class="green">&#129001 Зелёный цвет</mark> - буква <u>присутствует</u> в загаданном слове <u>на той же позиции</u>, что она и была введена; <br>
+        <mark class="gray"><p id="gray-cube">⬜</p>Тёмно-серый</mark> - буквы <u>не</u> существует в загаданном слове вообще.
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-container" data-alert-container></div>
+  <div data-guess-grid class="guess-grid">
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+  </div>
+  <div data-keyboard class="keyboard">
+    <button class="key" data-key="Й">Й</button>
+    <button class="key" data-key="Ц">Ц</button>
+    <button class="key" data-key="У">У</button>
+    <button class="key" data-key="К">К</button>
+    <button class="key" data-key="Е">Е</button>
+    <button class="key" data-key="Н">Н</button>
+    <button class="key" data-key="Г">Г</button>
+    <button class="key" data-key="Ш">Ш</button>
+    <button class="key" data-key="Щ">Щ</button>
+    <button class="key" data-key="З">З</button>
+    <button class="key" data-key="Х">Х</button>
+    <button class="key" data-key="Ъ">Ъ</button>
+    <div class="space"></div>
+    <button class="key" data-key="Ф">Ф</button>
+    <button class="key" data-key="Ы">Ы</button>
+    <button class="key" data-key="В">В</button>
+    <button class="key" data-key="А">А</button>
+    <button class="key" data-key="П">П</button>
+    <button class="key" data-key="Р">Р</button>
+    <button class="key" data-key="О">О</button>
+    <button class="key" data-key="Л">Л</button>
+    <button class="key" data-key="Д">Д</button>
+    <button class="key" data-key="Ж">Ж</button>
+    <button class="key" data-key="Э">Э</button>
+    <div class="space"></div>
+    <button data-enter class="key large">Enter</button>
+    <button class="key" data-key="Я">Я</button>
+    <button class="key" data-key="Ч">Ч</button>
+    <button class="key" data-key="С">С</button>
+    <button class="key" data-key="М">М</button>
+    <button class="key" data-key="И">И</button>
+    <button class="key" data-key="Т">Т</button>
+    <button class="key" data-key="Ь">Ь</button>
+    <button class="key" data-key="Б">Б</button>
+    <button class="key" data-key="Ю">Ю</button>
+    <button data-delete class="key large" id="delete">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+        <path fill="var(--color-tone-1)" d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
+      </svg>
+    </button>
+  </div>
+</body>
+</html>
