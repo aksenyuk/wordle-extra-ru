@@ -27,6 +27,6 @@ It's posted here as :
 
 DM me, gurl :)))
 
-## English version can be found here: [Wordle Extra Eng](https://github.com/allsuitablenamesarealreadytaken/wordle-extra)
+### English version can be found here: [Wordle Extra Eng](https://github.com/allsuitablenamesarealreadytaken/wordle-extra)
 
 ##### P.S. As for now, its ***mood*** is related to the main reason of this program establishment, but further it's gonna to changed to something neutral (but fun, ofc).
