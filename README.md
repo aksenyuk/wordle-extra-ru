@@ -1,7 +1,5 @@
 # Wordle Extra Russian
 
-### Done for my mom's b-day!!
-
 ## To access:
 
 Follow the link to the right (below "About" section)
